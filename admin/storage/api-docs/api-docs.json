@@ -1,0 +1,528 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "KF Api",
+        "description": "KF Admin",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api"
+        }
+    ],
+    "paths": {
+        "/interaction": {
+            "post": {
+                "tags": [
+                    "Interaction"
+                ],
+                "summary": "Create new interaction between user and item",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-Authorization"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Interaction"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "Failed operation"
+                    }
+                }
+            }
+        },
+        "/page-load": {
+            "post": {
+                "tags": [
+                    "PageLoad"
+                ],
+                "summary": "Create new page load",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-Authorization"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PageLoad"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "Failed operation"
+                    }
+                }
+            }
+        },
+        "/user-data": {
+            "post": {
+                "tags": [
+                    "UserData"
+                ],
+                "summary": "Create user data",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-Authorization"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserData"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "Failed operation"
+                    }
+                }
+            }
+        },
+        "/user-data/register": {
+            "patch": {
+                "tags": [
+                    "UserData"
+                ],
+                "summary": "Register user",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-Authorization"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegister"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "Failed operation"
+                    }
+                }
+            }
+        },
+        "/user-data/search-term": {
+            "post": {
+                "tags": [
+                    "UserData"
+                ],
+                "summary": "Log search term",
+                "operationId": "search-terms",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-Authorization"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchTerm"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "Failed operation"
+                    }
+                }
+            }
+        },
+        "/user-data/csv": {
+            "get": {
+                "tags": [
+                    "UserData"
+                ],
+                "summary": "Get all user data as csv",
+                "operationId": "csv",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/X-Authorization"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    },
+                    "500": {
+                        "description": "Failed operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BasicUserData": {
+                "properties": {
+                    "device": {
+                        "properties": {
+                            "manufacturer": {
+                                "type": "string"
+                            },
+                            "product": {
+                                "type": "string"
+                            },
+                            "isMobile": {
+                                "type": "number"
+                            },
+                            "memory": {
+                                "type": "number"
+                            },
+                            "resolution": {
+                                "properties": {
+                                    "width": {
+                                        "type": "number"
+                                    },
+                                    "height": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "os": {
+                        "properties": {
+                            "architecture": {
+                                "type": "string"
+                            },
+                            "family": {
+                                "type": "string"
+                            },
+                            "version": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "browser": {
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "version": {
+                                "type": "string"
+                            },
+                            "userAgent": {
+                                "type": "string"
+                            },
+                            "language": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "connection": {
+                        "properties": {
+                            "bandwidth": {
+                                "type": "number"
+                            },
+                            "ipAddress": {
+                                "type": "string"
+                            },
+                            "effectiveType": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "location": {
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "UserData": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "cookie_id"
+                        ],
+                        "properties": {
+                            "cookie_id": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    {
+                        "required": [
+                            "partnerId"
+                        ],
+                        "properties": {
+                            "partnerId": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/BasicUserData"
+                    }
+                ]
+            },
+            "SearchTerm": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "cookie_id"
+                        ],
+                        "properties": {
+                            "cookie_id": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    {
+                        "required": [
+                            "partnerId"
+                        ],
+                        "properties": {
+                            "partnerId": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    {
+                        "required": [
+                            "searchTerm"
+                        ],
+                        "properties": {
+                            "searchTerm": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "UserRegister": {
+                "required": [
+                    "cookieId",
+                    "userId",
+                    "partnerId"
+                ],
+                "properties": {
+                    "cookieId": {
+                        "type": "string"
+                    },
+                    "partnerId": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "birthDate": {
+                        "description": "yyyy-mm-dd",
+                        "type": "string"
+                    },
+                    "emailDomain": {
+                        "description": "gmail.com",
+                        "type": "string"
+                    },
+                    "phoneProvider": {
+                        "description": "20,30,70",
+                        "type": "string"
+                    },
+                    "sex": {
+                        "description": "male | female",
+                        "type": "string"
+                    },
+                    "realCityName": {
+                        "description": "User real city name",
+                        "type": "string"
+                    },
+                    "realPostalCode": {
+                        "description": "User real postal code",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PageLoad": {
+                "required": [
+                    "cookieId",
+                    "partnerId",
+                    "toUrl"
+                ],
+                "properties": {
+                    "cookieId": {
+                        "type": "string"
+                    },
+                    "partnerId": {
+                        "type": "string"
+                    },
+                    "toUrl": {
+                        "type": "string"
+                    },
+                    "fromUrl": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Interaction": {
+                "required": [
+                    "cookieId",
+                    "partnerId",
+                    "type",
+                    "items"
+                ],
+                "properties": {
+                    "cookieId": {
+                        "type": "string"
+                    },
+                    "partnerId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "description": "required if type is buy",
+                        "type": "string"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "required": [
+                                "id",
+                                "name"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "qty": {
+                                    "type": "number"
+                                },
+                                "unit_price": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "X-Authorization": {
+                "name": "X-Authorization",
+                "in": "header",
+                "description": "consumer api key",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

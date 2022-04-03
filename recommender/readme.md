@@ -1,0 +1,11 @@
+# Ajánlás menete:
+- Lekérdezzük az összes interackiót a kapott szegmenshez (termék megtekintés, vásárlás) -> Így megvannak a szegmensben legnépszerűbb / legideálisabb termékek
+- Ezeket pontozzuk és rendezzük. A termék vásárlás kétszer olyan súllyal számít, mint a megtekintés
+- A legjobb termékhez megkeressük a leginkább hasonlót (termék név, leírás, attribútumok alapján)
+- Ezeket összefésüljük -> Így megvannak a legjobb termékek interakciók, és hasonlóság alapján
+- Ezután a lista elejére helyezzük az adott szegmenshez (admin felületen) beállított 'Mindig megjelenik' típusú termék(ek)et (ha vannak ilyenek). Tehát ezek mindig prioritást élveznek
+- Ha még így is túl kevés terméket találtunk (amit a proposerben beállított max termék szám határoz meg), hozzáfűzzük a listához az 'Opcionálisan jelenik meg' típusú termék(ek)et (ha vannak ilyenek)
+- (Az opcionális termékek hozzáadását később pontszámozással lehet finomítani / súlyozni)
+- Fallback: (ez leginkább a rendszer indulásakor, vagy egy új szegmens megjelenésekor lehet fontos / hasznos)
+    - Ha így sincsenek termékek, akkor megkeressük szegmenstől függetlenül a legnépszerűbb N terméket a rendszerben
+    - Ha valamiért így sem kaptunk eredményt, akkor visszaadjuk a rendszerben szereplő első N terméket (ez már csak fejlesztői paranoia)
